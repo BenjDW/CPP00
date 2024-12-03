@@ -6,14 +6,17 @@
 #    By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 06:49:33 by bde-wits          #+#    #+#              #
-#    Updated: 2024/11/30 09:42:07 by bde-wits         ###   ########.fr        #
+#    Updated: 2024/12/03 09:16:05 by bde-wits         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-CXX = c++								# Compilateur
-CXXFLAGS = -Wall -Wextra -std=c++98		# Options de compilation
-TARGET =								# Nom de l'exécutable final
+# Compilateur
+CXX = c++
+# Options de compilation
+CXXFLAGS = -Wall -Wextra -std=c++98
+# Nom de l'exécutable final
+TARGET = phonebook
 
 # Liste des fichiers sources et objets
 SRC =                       # Fichier source

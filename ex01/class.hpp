@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 05:52:46 by bde-wits          #+#    #+#             */
-/*   Updated: 2024/12/03 06:54:32 by bde-wits         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:49:55 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	phone_book
 		{
 			delete[] contact;
 		}
-		std::string	getvar(int index, int type); //getter
+		// std::string	getvar(int index, int type); //getter
 		// {
 		// 	if (index < 0 || index > 7)
 		// 		return (NULL);
@@ -59,6 +59,7 @@ class	phone_book
 		// 		darkest_secret[index] = info.c_str();
 		// }
 		void	add(std::string temp);
+		void	search();
 	private:
 		Contact	*contact[8];
 	// Les champs d’un contact enregistré ne peuvent être vides.
@@ -67,8 +68,8 @@ class	phone_book
 class	Contact
 {
 	public:
-		void	setvar(int index, int type, std::string info); //setter
-		std::string	getvar(int index, int type); //getter
+		void	setvar(int type, std::string info); //setter
+		std::string	getvar(int type); //getter
 	private:
 		std::string	firstname;
 		std::string	lastname;
