@@ -6,7 +6,7 @@
 #    By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 06:49:33 by bde-wits          #+#    #+#              #
-#    Updated: 2024/12/03 09:16:05 by bde-wits         ###   ########.fr        #
+#    Updated: 2024/12/18 09:47:50 by bde-wits         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CXXFLAGS = -Wall -Wextra -std=c++98
 TARGET = phonebook
 
 # Liste des fichiers sources et objets
-SRC =                       # Fichier source
-OBJ =                       # Fichier objet
+SRC = phonebook.cpp                      # Fichier source
+OBJ = phonebook.o                      # Fichier objet
 
 # Règle principale
 all: $(TARGET)

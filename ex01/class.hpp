@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 05:52:46 by bde-wits          #+#    #+#             */
-/*   Updated: 2024/12/03 09:49:55 by bde-wits         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:17:43 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define PHONEBOOK_HPP
 #include <iostream>
 #include <locale>
+#include <stdlib.h>
 
 // void	getvar(char *str);
 class Contact;
@@ -24,10 +25,10 @@ class	phone_book
 	public:
 		int	count;
 		phone_book(); //constructeur
-		~phone_book() //destructeur
-		{
-			delete[] contact;
-		}
+		~phone_book(); //destructeur
+		// {
+		// 	delete[] contact;
+		// }
 		// std::string	getvar(int index, int type); //getter
 		// {
 		// 	if (index < 0 || index > 7)
@@ -77,6 +78,9 @@ class	Contact
 		std::string	phonenumber;
 		std::string	darkest_secret;
 };
+
+std::string trunc(const std::string& str);
+int			all_number(std::string index);
 
 // 	return ();
 // }
