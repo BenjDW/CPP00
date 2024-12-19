@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 09:07:32 by bde-wits          #+#    #+#             */
-/*   Updated: 2024/12/03 10:28:29 by bde-wits         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:55:54 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
 
 // SEARCH : affiche le contact demandé
 // ◦ Affiche les contacts enregistrés sous la forme d’une liste de 4 colonnes : index,
@@ -24,6 +25,9 @@
 // un point (’.’).
 // ◦ Ensuite, le programme demande à l’utilisateur d’entrer l’index du contact à afficher. Si l’index ou son format sont incorrects, gérez cela de manière pertinente.
 // Sinon, affichez les informations du contact, une par ligne.
+
+phone_book::phone_book() {}
+phone_book::~phone_book() {}
 
 void	phone_book::search()
 {
@@ -54,8 +58,8 @@ void	phone_book::search()
 		std::getline(std::cin, solo_contact);
 		if (all_number(solo_contact) == 0)
 		{
-			solo = std::stoi(solo_contact);
-			if (solo > count || solo > 7 || solo < 0)
+			solo = atoi(solo_contact.c_str());
+			if (solo >= count || solo > 7 || solo < 0)
 				std::cout << "need a valid index (0 to 7), overflow" << std::endl;
 			break ;
 		}
@@ -73,7 +77,8 @@ int	all_number(std::string index)
 {
 	int i = -1;
 
-	while (index[++i] != '\n')
+	std::cout << index << std::endl;
+	while (index[++i] != '\0')
 	{
 		if (!isdigit(index[i]))
 			return (1);
@@ -101,6 +106,7 @@ std::string	Contact::getvar(int type) //getter
 		return (phonenumber);
 	if (type == 4)
 		return (darkest_secret);
+	return (NULL);
 }
 
 void	Contact::setvar(int type, std::string info) //setter
@@ -153,15 +159,23 @@ int	main(int argc, char **argv)
 	std::string	temp;
 
 	(void)argc;
+	(void)argv;
 	repertoire.count = 0;
 	while(1)
 	{
-		std::getline(std::cin, temp, '\n');
+		std::cout << "ENTER command : ";
+		if (!std::getline(std::cin, temp)) 
+		{ // Vérifie EOF ou une erreur
+            std::cout << "Command CTRL+D (EOF) Detecte bye bye" << std::endl;
+			break;
+        }
+		if (temp.empty())
+			std::cout << "need to enter a command (ADD, SEARCH, EXIT)" << std::endl;
 		if (temp.compare("EXIT") == 0)
 			exit(0);
 		if (temp.compare("ADD") == 0)
 			repertoire.add(temp);
 		if (temp.compare("SEARCH") == 0)
-			// search(&repertoire, );
+			repertoire.search();
 	}
 }
