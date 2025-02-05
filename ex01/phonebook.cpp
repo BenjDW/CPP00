@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 09:07:32 by bde-wits          #+#    #+#             */
-/*   Updated: 2024/12/19 12:55:54 by bde-wits         ###   ########.fr       */
+/*   Updated: 2025/02/05 07:51:42 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 #include <string>
 #include <iomanip>
 #include <cstdlib>
-
-// SEARCH : affiche le contact demandé
-// ◦ Affiche les contacts enregistrés sous la forme d’une liste de 4 colonnes : index,
-// first name, last name et nickname.
-// ◦ Chaque colonne doit faire 10 caractères de long. Elles doivent être séparées
-// par un pipe (’|’). Leur texte est aligné à droite. Si le texte dépasse la largeur
-// de la colonne, il faut le tronquer et remplacer le dernier caractère affiché par
-// un point (’.’).
-// ◦ Ensuite, le programme demande à l’utilisateur d’entrer l’index du contact à afficher. Si l’index ou son format sont incorrects, gérez cela de manière pertinente.
-// Sinon, affichez les informations du contact, une par ligne.
 
 phone_book::phone_book() {}
 phone_book::~phone_book() {}
@@ -38,13 +28,11 @@ void	phone_book::search()
         std::cout << "No contacts available." << std::endl;
         return;
     }
-    // Afficher l'en-tête // setw = set width
     std::cout << std::setw(10) << "Index" << "|"
               << std::setw(10) << "First Name" << "|"
               << std::setw(10) << "Last Name" << "|"
               << std::setw(10) << "Nickname" << std::endl;
-    std::cout << std::string(44, '-') << std::endl;  // Ligne de séparation
-    // Afficher les contacts existants (limité à 8)
+    std::cout << std::string(44, '-') << std::endl;
     for (int i = 0; i < count && i < 8; i++)
 	{
         std::cout << std::setw(10) << i << "|"
@@ -86,15 +74,14 @@ int	all_number(std::string index)
 	return (0);
 }
 
-// Fonction pour tronquer une chaîne à 10 caractères
 std::string trunc(const std::string& str)
 {
     if (str.length() > 10)
-        return str.substr(0, 9) + ".";  // Tronquer et ajouter un point
+        return str.substr(0, 9) + ".";
     return str;
 }
 
-std::string	Contact::getvar(int type) //getter
+std::string	Contact::getvar(int type)
 {
 	if (type == 0)
 		return (firstname);
@@ -109,10 +96,10 @@ std::string	Contact::getvar(int type) //getter
 	return (NULL);
 }
 
-void	Contact::setvar(int type, std::string info) //setter
+void	Contact::setvar(int type, std::string info)
 {
 	if (type == 0)
-		this->firstname = info; //.c_str();
+		this->firstname = info;
 	if (type == 1)
 		this->lastname = info;
 	if (type == 2)
@@ -165,7 +152,7 @@ int	main(int argc, char **argv)
 	{
 		std::cout << "ENTER command : ";
 		if (!std::getline(std::cin, temp)) 
-		{ // Vérifie EOF ou une erreur
+		{
             std::cout << "Command CTRL+D (EOF) Detecte bye bye" << std::endl;
 			break;
         }
